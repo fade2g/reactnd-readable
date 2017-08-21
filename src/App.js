@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import BackendApi from './api';
 
 class App extends Component {
+
   render() {
+    (new BackendApi()).getCategories();
     return (
       <div className="App">
         <div className="App-header">
