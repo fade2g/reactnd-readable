@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import {connect} from 'react-redux';
 import Posts from './posts/posts.component'
@@ -12,23 +11,35 @@ class App extends Component {
   }
 
   render() {
+    let {menuItems} = this.props;
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+        <div className="ui fixed inverted menu">
+          <div className="ui container">
+            <span className="item">Readable</span>
+            <div className="ui simple dropdown item">
+              select category
+              <i className="dropdown icon" />
+              <div className="menu">
+                {menuItems.map((menuItem) => {
+                  return <a key={menuItem.id} href="#" className="item">{menuItem.title}</a>
+                })}
+              </div>
+            </div>
+          </div>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
         <Posts></Posts>
       </div>
     );
   }
 }
 
-function mapStateToProps() {
-  return { }
+function mapStateToProps({categories}) {
+  return {
+    categories: categories.categories,
+    menuItems: [{id: null, title: 'All posts'}]
+      .concat(categories.categories && categories.categories.map((cat) => {return {id: cat.path, title: cat.name}}))
+  }
 }
 
 function mapDispatchToProps(dispatch) {
