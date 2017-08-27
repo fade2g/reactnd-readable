@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import BackendApi from './api';
+import {connect} from 'react-redux';
 import Posts from './posts/posts.component'
+import {initCategoriesWithDataThunk} from "./categories/actions";
 
 class App extends Component {
 
+  componentDidMount() {
+    this.props.initCategoriesThunk();
+  }
+
   render() {
-    (new BackendApi()).getCategories();
     return (
       <div className="App">
         <div className="App-header">
@@ -23,4 +27,14 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps() {
+  return { }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    initCategoriesThunk: () => initCategoriesWithDataThunk()(dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
