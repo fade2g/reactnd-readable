@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import {connect} from 'react-redux';
-import Posts from './posts/posts.component'
+import PostsContainer from './postsContainer/postscontainer.component'
 import {initCategoriesWithDataThunk} from "./categories/actions";
 
 class App extends Component {
@@ -28,7 +28,7 @@ class App extends Component {
             </div>
           </div>
         </div>
-        <Posts></Posts>
+        <PostsContainer />
       </div>
     );
   }

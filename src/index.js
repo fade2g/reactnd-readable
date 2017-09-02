@@ -7,7 +7,8 @@ import {Provider} from 'react-redux'
 import reducer from './shared/reducer'
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { createLogger } from 'redux-logger'
+import {createLogger} from 'redux-logger'
+import {BrowserRouter} from "react-router-dom";
 
 const logger = createLogger({});
 
@@ -22,7 +23,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root'));
 registerServiceWorker();
