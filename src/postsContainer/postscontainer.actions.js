@@ -9,8 +9,8 @@ export function loadPosts(posts) {
   }
 }
 
-export function loadPostsWithData() {
-  return function (dispatch) {
+export function loadPostsWithData(dispatch) {
+  return function () {
     fetchFactory('posts')
       .then((response) => {
         return response.json();

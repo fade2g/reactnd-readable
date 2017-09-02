@@ -34,7 +34,7 @@ function mapStateToProps({posts, comments}) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    load: () => () => loadPostWithData(dispatch)
+    load: loadPostWithData(dispatch)
   }
 }
 

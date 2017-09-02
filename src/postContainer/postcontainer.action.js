@@ -12,8 +12,8 @@ function loadPost(postId, post) {
   }
 }
 
-export function loadPostWithData(postId) {
-  return function (dispatch) {
+export function loadPostWithData(dispatch) {
+  return function (postId) {
     fetchFactory('posts/' + postId)
       .then((response) => {
         return response.json();
