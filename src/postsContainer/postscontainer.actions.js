@@ -10,8 +10,8 @@ export function loadPosts(posts) {
 }
 
 export function loadPostsWithData(dispatch) {
-  return function () {
-    fetchFactory('posts')
+  return function (category) {
+    fetchFactory(category ? category + '/posts' : 'posts')
       .then((response) => {
         return response.json();
       })

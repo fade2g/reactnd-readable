@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import {connect} from "react-redux";
 import Posts from "../posts/posts.component";
 import {loadPostsWithData} from "./postscontainer.actions";
+import PropTypes from 'prop-types';
 
 
 /**
@@ -12,9 +13,13 @@ import {loadPostsWithData} from "./postscontainer.actions";
  */
 class PostsContainer extends Component {
 
+  // noinspection JSUnusedGlobalSymbols
+  static propTypes = {
+    category: PropTypes.string
+  };
 
   componentDidMount() {
-    this.props.loadPosts();
+    this.props.loadPosts(this.props.category);
   }
 
   render() {

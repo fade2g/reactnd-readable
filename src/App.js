@@ -3,6 +3,7 @@ import './App.css';
 import {connect} from 'react-redux';
 import PostsContainer from './postsContainer/postscontainer.component'
 import {initCategoriesWithDataThunk} from "./categories/actions";
+import {Link, Route, withRouter} from "react-router-dom";
 
 class App extends Component {
 
@@ -22,13 +23,16 @@ class App extends Component {
               <i className="dropdown icon" />
               <div className="menu">
                 {menuItems.map((menuItem) => {
-                  return <a key={menuItem.id} href="#" className="item">{menuItem.title}</a>
+                  return <Link key={menuItem.id} to={menuItem.id !== null ? `/${menuItem.id}`: '/'} className="item">{menuItem.title}</Link>
                 })}
               </div>
             </div>
           </div>
         </div>
-        <PostsContainer />
+        <Route path="/:category" render={({ match, location }) => (
+          <PostsContainer category={match.params.category} location={location}/>
+        )}/>
+        <Route exact path="/" component={PostsContainer} />
       </div>
     );
   }
@@ -48,4 +52,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
