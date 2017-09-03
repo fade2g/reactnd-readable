@@ -1,42 +1,28 @@
 const basicCommand = {
   method: 'GET',
-  headers: { 'Authorization': 'whatever-you-want' }
+  headers: {
+    'Authorization': 'whatever-you-want',
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  }
 };
 
-const baseUrl3 = 'http://localhost:5001';
+const basicGetCommand = {
+  ...basicCommand,
+  method: 'GET'
+};
 
+const basicPostCommand = {
+    ...basicCommand,
+    method: 'POST'
+  };
 
-class BackendApi {
-  constructor() {
-    this.baseUrl2 = 'http://localhost:5001'
-  }
-
-  getCategories() {
-    fetch(this.baseUrl2 + '/categories', basicCommand)
-      .then((response) => {
-        return response.json();
-      })
-      .then(payload => {
-        console.log(payload);
-      })
-  }
-
-  static fetchFactory() {
-    return function(supplement) {
-      return fetch(baseUrl3 + '/' + supplement, basicCommand)
-    }
-  }
-
-  getCategories2() {
-    fetch(this.baseUrl2 + '/categories', basicCommand)
-      .then((response) => {
-        return response.json();
-      })
-  }
-}
+const baseUrl = 'http://localhost:5001';
 
 export const fetchFactory = (supplement) => {
-  return fetch(baseUrl3 + '/' + supplement, basicCommand)
+  return fetch(baseUrl + '/' + supplement, basicGetCommand)
 };
 
-export default BackendApi;
+export const postFactory = (supplement, data) => {
+  return fetch(baseUrl + '/' + supplement, {...basicPostCommand, body: JSON.stringify(data)})
+};

@@ -6,7 +6,7 @@ export function post(state = {posts: []}, action) {
     case LOAD_POST:
       return {
         ...state,
-        [payload.postId]: payload.post
+        [payload.id]: payload.post
       };
     default:
       return state;

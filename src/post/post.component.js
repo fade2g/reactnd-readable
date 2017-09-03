@@ -4,6 +4,7 @@ import Moment from 'react-moment';
 
 import CommentsContainer from '../commentsContainer/commentscontainer.component'
 import './post.css';
+import {VoteUp, VoteDown} from "../icons/index";
 
 class Post extends Component {
 
@@ -11,13 +12,16 @@ class Post extends Component {
   static propTypes = {
     post: PropTypes.object.isRequired,
     comments: PropTypes.array,
-    lastItem: PropTypes.bool
+    lastItem: PropTypes.bool,
+    voteHandler: PropTypes.func
   };
 
   render() {
-    let {post, comments, lastItem} = this.props;
+    let {post, comments, lastItem, voteHandler} = this.props;
     return (
       <div>
+        <VoteUp clickHandler={voteHandler(post.id, true)}/><VoteDown clickHandler={voteHandler(post.id, false)}/>
+        {post.updating}
         <div className="ui medium header">{post.title}</div>
         <div className="details">
           <span className="post-score post-detail-separator">
