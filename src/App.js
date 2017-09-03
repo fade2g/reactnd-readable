@@ -30,6 +30,7 @@ class App extends Component {
           </div>
         </div>
         <Route path="/:category" render={({ match, location }) => (
+          // FIXME: category change does not trigger a rerender of PostsContainer
           <PostsContainer category={match.params.category} location={location}/>
         )}/>
         <Route exact path="/" component={PostsContainer} />
