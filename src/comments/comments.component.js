@@ -10,7 +10,6 @@ class Comments extends Component {
 
   render() {
     let {comments} = this.props;
-    console.log(comments);
     return (
       <div>
         <p>Here come the comments</p>

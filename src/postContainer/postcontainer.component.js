@@ -14,7 +14,6 @@ class PostContainer extends Component {
   };
 
   componentDidMount() {
-    console.log('Load post for postId ' + this.props.postId);
     this.props.load(this.props.postId);
   }
 

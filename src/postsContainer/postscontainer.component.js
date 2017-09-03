@@ -25,7 +25,6 @@ class PostsContainer extends Component {
 }
 
 function mapStateToProps({categories, posts}) {
-  console.log(posts);
   return {
     categories: categories.categories,
     posts: posts.posts

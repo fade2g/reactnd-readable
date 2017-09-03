@@ -17,7 +17,6 @@ class CommentsContainer extends Component {
   }
 
   render() {
-    console.log('Render comments for postId ' + this.props.postId + ' with comments ' + this.props.comments);
     return <Comments comments={this.props.comments[this.props.postId]}/>
   }
 }

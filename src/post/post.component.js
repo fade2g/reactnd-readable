@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+
 import CommentsContainer from '../commentsContainer/commentscontainer.component'
 import './post.css';
 
@@ -14,7 +16,6 @@ class Post extends Component {
 
   render() {
     let {post, comments, lastItem} = this.props;
-    console.log(post);
     return (
       <div>
         <div className="ui medium header">{post.title}</div>
@@ -24,7 +25,7 @@ class Post extends Component {
           </span>
           <span className="post-author post-detail-separator">by <em>{post.author}</em></span>
           <span className="post-author post-detail-separator">
-            written on <em>{(new Date(post.timestamp)).toLocaleString()}</em>
+            <em><Moment fromNow>{new Date(post.timestamp)}</Moment></em>
           </span>
           <span className="post-comments">
             <em>{comments && comments.length}</em> comment{comments && comments.length !== 1 && 's'}
