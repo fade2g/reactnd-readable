@@ -15,12 +15,14 @@ class Posts extends Component {
     let {posts} = this.props;
     return <div className="ui main text container">
       <ul>
-        {posts && posts.map(post => {return <li key={post.id}>{post.title}, #{post.numberOfComments}</li>})}
+        {posts && posts.map(post => {
+          return <li key={post.id}>{post.title}, #{post.numberOfComments}</li>
+        })}
       </ul>
-      <hr />
-        <ul>
-          {posts && posts.map(post => (<PostContainer key={post.id} postId={post.id}/>))}
-        </ul>
+      <hr/>
+      {posts && posts.map((post, index, posts) => (
+        <PostContainer key={post.id} postId={post.id} lastItem={index === posts.length - 1}/>
+      ))}
     </div>
   }
 }

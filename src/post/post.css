@@ -1,0 +1,7 @@
+.post-detail-separator::after {
+  content: " | ";
+}
+
+.post-score-value {
+  font-weight: bold;
+}

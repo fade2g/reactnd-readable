@@ -9,7 +9,8 @@ class PostContainer extends Component {
 
   // noinspection JSUnusedGlobalSymbols
   static propTypes = {
-    postId: PropTypes.string.isRequired
+    postId: PropTypes.string.isRequired,
+    lastItem: PropTypes.bool
   };
 
   componentDidMount() {
@@ -18,10 +19,10 @@ class PostContainer extends Component {
   }
 
   render() {
-    const {posts, comments} = this.props;
+    const {posts, comments, lastItem} = this.props;
     let post;
     posts.forEach(p => {if (p.id === this.props.postId) {post = p;}});
-    return (<div className="post-container"><Post post={post} comments={comments[this.props.postId]}/> </div>)
+    return (<div className="post-container"><Post post={post} comments={comments[this.props.postId]} lastItem={lastItem}/> </div>)
   }
 }
 
