@@ -19,7 +19,7 @@ class PostContainer extends Component {
 
   render() {
     const {posts, comments, lastItem} = this.props;
-    let post;
+    let post = {};
     posts.forEach(p => {if (p.id === this.props.postId) {post = p;}});
     return (<div className="post-container"><Post post={post} comments={comments[this.props.postId]} lastItem={lastItem}/> </div>)
   }
