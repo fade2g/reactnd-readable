@@ -21,7 +21,7 @@ class ReadableHeader extends Component {
           <i className="dropdown icon" />
           <div className="menu">
             {menuItems.map((menuItem) => {
-              return <Link key={menuItem.id} to={menuItem.id !== null ? `/${menuItem.id}`: '/'} className="item">{menuItem.title}</Link>
+              return <Link key={menuItem.id} to={menuItem.id !== null ? `/category/${menuItem.id}`: '/'} className="item">{menuItem.title}</Link>
             })}
           </div>
         </div>

@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <ReadableHeader />
-        <Route path="/:category" component={PostsContainer} />
+        <Route path="/category/:category" component={PostsContainer} />
         <Route exact path="/" component={PostsContainer} />
       </div>
     );
