@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import Posts from "../posts/posts.component";
 import {loadPostsWithData} from "./postscontainer.actions";
 import PropTypes from 'prop-types';
+import {withRouter} from "react-router-dom";
 
 
 /**
@@ -19,11 +20,19 @@ class PostsContainer extends Component {
   };
 
   componentDidMount() {
-    this.props.loadPosts(this.props.category);
+    this.props.loadPosts(this.props.match.params.category);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('componentWillReceiveProps');
+    if (this.props.match.params.category !== nextProps.match.params.category) {
+      this.props.loadPosts(nextProps.match.params.category);
+    }
   }
 
   render() {
     return (<div>
+      cat={this.props.category}
       <Posts posts={this.props.posts}/>
     </div>)
   }
@@ -43,4 +52,4 @@ function mapDispatchToProps(dispatch) {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostsContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(PostsContainer))
